@@ -1,0 +1,4 @@
+name: AetherLib
+version: '${version}'
+main: com.autumnstudios.lib.aetherlib.AetherLib
+api-version: '1.20'
