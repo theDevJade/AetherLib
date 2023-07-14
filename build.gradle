@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0'
 }
 
 group = 'com.autumnstudios.lib'
@@ -7,6 +8,8 @@ version = '1.0'
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.codemc.io/repository/maven-snapshots/' }
+    maven { url "https://repo.dmulloy2.net/repository/public/" }
     maven {
         name = "papermc-repo"
         url = "https://repo.papermc.io/repository/maven-public/"
@@ -18,7 +21,13 @@ repositories {
 }
 
 dependencies {
-compileOnly "io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT"
+
+    compileOnly 'com.comphenix.protocol:ProtocolLib:5.0.0'
+    compileOnly 'com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT'
+
+    compileOnly "io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk17"
 }
 
 def targetJavaVersion = 17
@@ -44,4 +53,7 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+kotlin {
+    jvmToolchain(17)
 }
